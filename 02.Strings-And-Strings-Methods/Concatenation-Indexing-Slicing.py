@@ -213,6 +213,171 @@ If you omit the first index in a slice, Python assumes you want to start
 at index 0:
 """
 
-print(Flavour[:3])
-print(Flavour[:5])
-print(Flavour[:9])
+#print(Flavour[:3])
+#print(Flavour[:5])
+#print(Flavour[:9])
+
+"""
+The slice [:5] is equivalent to the slice [0:5], so flavor[:5] returns the
+first five characters in the string "Apple Pie".
+
+Similarly, if you omit the second index in the slice, Python assumes
+you want to return the substring that begins with the character whose
+index is the first number in the slice and ends with the last character
+in the string:
+
+"""
+#print(Flavour[5:])
+
+"""
+For "Apple Pie", the slice [5:] is equivalent to the slice [5:9]. Since
+the character with index 5 is a space, Flavor[5:9] returns the substring
+that starts with the space and ends with the last letter, which is " Pie".
+
+"""
+
+"""
+If you omit both the first and second numbers in a slice, you get a
+string that starts with the character with index 0 and ends with the last
+character. In other words, omitting both numbers in a slice returns
+the entire string:
+
+"""
+#print(Flavour[:])
+
+"""
+It’s important to note that, unlike string indexing, Python won’t raise
+an IndexError when you try to slice between boundaries before or after 
+the beginning and ending boundaries of a string:
+"""
+
+#print(Flavour[:14])
+#print(Flavour[13:15])
+
+"""
+In this example, the first line gets the slice from the beginning of the
+string up to but not including the fourteenth character. The string assigned to flavor has length nine, so you might expect Python to throw
+an error. Instead, any non-existent indices are ignored and the entire
+string "Apple Pie" is returned.
+
+The second shows what happens when you try to get a slice where
+the entire range is out of bounds. Flavor[13:15] attempts to get the
+thirteenth and fourteenth characters, which don’t exist. Instead of
+raising an error, the empty string "" is returned.
+"""
+
+
+
+
+"""
+You can use negative numbers in slices. 
+The rules for slices with negative numbers are exactly the same as 
+slices with positive numbers.
+
+It helps to visualize the string as slots with the boundaries labeled by
+negative numbers:
+| a | p | p | l | e | | p | i | e |
+ -9  -8  -7  -6  -5 -4 -3  -2  -1
+
+Just like before, the slice [x:y] returns the substring between the
+boundaries x and y. For instance, the slice [-9:-6] returns the first
+three letters of the string "apple pie":
+"""
+#print(Flavour[-9:-6])
+
+
+
+"""
+Notice, however, that the right-most boundary does not have a negative index. 
+The logical choice for that boundary would seem to be the
+number 0, but that doesn’t work:
+"""
+#print(Flavour[-9:0])
+
+"""
+Instead of returning the entire string, [-9:0] returns the empty
+string "". This is because the second number in a slice must correspond to a boundary that comes after the boundary corresponding
+to the first number, but both -9 and 0 correspond to the left-most
+boundary in the figure.
+"""
+
+
+"""
+If you need to include the final character of a string in your slice, you
+can omit the second number:
+"""
+#print(Flavour[-9:])
+
+
+
+
+"""
+Strings Are Immutable
+To wrap this section up, let’s discuss an important property of string
+objects. Strings are immutable, which means that you can’t change
+them once you’ve created them. For instance, see what happens when
+you try to assign a new letter to one particular character of a string:
+"""
+Word = "Goal"
+#Word[0] = "T"
+#print(Word)
+
+"""
+Python throws a TypeError and tells you that str objects don’t support
+item assignment.
+"""
+
+"""
+Note:
+The term str is Python’s internal name for the string data type.
+If you want to alter a string, you must create an entirely new string.
+
+To change the string "Goal" to the string "Toal", you can use a string
+slice to concatenate the letter "T" with everything but the first letter of
+the word "Goal":
+"""
+
+Word = "Goal"
+Word = "T" + Word[1:]
+#print(Word)
+
+"""
+First assign the string "Goal" to the variable word. Then concatenate
+the slice word[1:], which is the string "oal", with the letter "T" to get
+the string "Toal". If you’re getting a different result here, make sure
+you’re including the : colon character as part of the string slice.
+
+"""
+
+
+
+
+####        Tasks       ####
+##### Create a string and print its length using the len() function.
+Agent = "The distribution of agents makes it easier to separate tasks."
+#print(len(Agent))
+
+
+
+##### Create two strings, concatenate them, and print the resulting string.
+FirstName = "Franklin"
+LastName = "Saint"
+FullName = FirstName + LastName
+
+print(FullName)
+print(f"{FirstName} {LastName}")
+print(FirstName + " " + LastName)
+
+
+
+
+##### Print the string "zing" by using slice notation on the string
+# "bazinga" to specify the correct range of characters.
+Word = "Bazinga"
+
+print(Word)
+print(Word[2:6])
+
+
+
+#####           -----         -----         -----         #####
