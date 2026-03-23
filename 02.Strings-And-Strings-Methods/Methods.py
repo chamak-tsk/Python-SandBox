@@ -404,3 +404,5 @@ print(string1.startswith("Be"))
 print(string2.startswith("be"))
 print(string3.startswith("BE"))
 print(string4.startswith(" bE")) # Space sensitive
+
+#####                   End of String Methods                   #####
